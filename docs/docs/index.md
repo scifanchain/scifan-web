@@ -1,17 +1,11 @@
-# Welcome to ScifanChian
+# 欢迎访问Scifanchain文档
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+赛凡链Scifanchain主站请访问 [scifanchain.com](https://scifanchain.com)。
 
-## Commands
+赛凡链是一个开源的科幻产业区块链项目，如果您愿意参与项目的开发、运维和社区建设等服务，欢迎光临我们[github上的家](https://github.com/scifanchain/web)。
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## 文档说明
 
-## Project layout
+本文档采用Mkdocs构建，目前部署于github的Pages。
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+

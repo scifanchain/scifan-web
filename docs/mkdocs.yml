@@ -5,6 +5,7 @@ nav:
     - 成为节点: be-node.md
     - 路线图: road-map.md
     - 蓝皮书: blue-book.md
+    - 贡献文档: 如何贡献文档.md
 copyright: Copyright &copy; 2021 <a href="http://docs.scifanchain.com">赛凡链</a>.
 theme: 
   name: 'cosmo'
