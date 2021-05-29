@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>成为节点 - 赛凡链文档</title>
+        <title>贡献文档 - 赛凡链文档</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -34,22 +34,22 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">首页</a>
+                                <a href="../%E9%A6%96%E9%A1%B5/" class="nav-link">首页</a>
                             </li>
                             <li class="navitem">
-                                <a href="../be-author/" class="nav-link">成为创作者</a>
+                                <a href="../%E6%88%90%E4%B8%BA%E5%88%9B%E4%BD%9C%E8%80%85/" class="nav-link">成为创作者</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../%E6%88%90%E4%B8%BA%E9%AA%8C%E8%AF%81%E4%BA%BA/" class="nav-link">成为证证人</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF%E5%9B%BE/" class="nav-link">发展路线图</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../%E7%99%BD%E7%9A%AE%E4%B9%A6/" class="nav-link">白皮书</a>
                             </li>
                             <li class="navitem active">
-                                <a href="./" class="nav-link">成为节点</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../road-map/" class="nav-link">路线图</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../blue-book/" class="nav-link">蓝皮书</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../%E5%A6%82%E4%BD%95%E8%B4%A1%E7%8C%AE%E6%96%87%E6%A1%A3/" class="nav-link">贡献文档</a>
+                                <a href="./" class="nav-link">贡献文档</a>
                             </li>
                         </ul>
 
@@ -60,12 +60,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../be-author/" class="nav-link">
+                                <a rel="prev" href="../%E7%99%BD%E7%9A%AE%E4%B9%A6/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../road-map/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -87,12 +87,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">如何开始创作</a>
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">在贡献文档前需要做的准备工作</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">如何创建一个节点</a>
+            <li class="nav-item" data-level="2"><a href="#fork" class="nav-link">Fork文档代码</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -101,12 +101,23 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="_1">如何开始创作</h2>
-<p>一切从注册一个账号开始。</p>
-<h2 id="_2">如何创建一个节点</h2>
-<p>任何人都可以成为一个区块节点，与所有节点一样构成赛凡链的一部分。任何一个节点都享有同等权利和责任。</p>
-<p>并不是每个人都有必要成为节点。成为节点的创建者，是为赛凡链做出贡献。</p>
-<pre><code>./target/node-template/release
+<h2 id="_1">在贡献文档前需要做的准备工作</h2>
+<p>我们基于Markdown来编写文档，使用Mkdocs来管理和生成静态站点，采用githup的Pages服务部署。欢迎所有的社区成员为文档贡献内容，以帮助新成员们得到好的指导。</p>
+<h3 id="python">安装Python</h3>
+<p>Scifanchain的文档使用Mkdocs程序构建，这是一个优秀的Python工具，要使用它需要安装Python。不，您并不需掌握Python语言，只是需要在您的电脑上安装它即可以。</p>
+<p><a href="https://docs.python.org/zh-cn/3/using/windows.html#installation-steps">在Windows上使用 Python</a></p>
+<h3 id="mkdocs">安装Mkdocs</h3>
+<p>打开终端，使用以下命令安装mkdocs：</p>
+<pre><code>pip3 install mkdocs
+</code></pre>
+<h3 id="git">安装git</h3>
+<p>我们使用git来进行协作。Mkdocs提供了一键发布到github的功能，所以为文档贡献内容只需要使用简单的git命令。</p>
+<h3 id="markdown">学习一些简单的Markdown语法</h3>
+<p>Markdown是一种轻量级标记语言，排版语法简洁，让人们更多地关注内容本身而非排版。它使用易读易写的纯文本格式编写文档，可与HTML混编，可导出 HTML、PDF 以及本身的 .md 格式的文件。因简洁、高效、易读、易写，Markdown被大量使用。</p>
+<p><a href="https://markdown.com.cn/">Markdown教程</a></p>
+<h2 id="fork">Fork文档代码</h2>
+<p>使用以下命令，将fork的代码clone到本地：</p>
+<pre><code>git clone git@github.com:xxx
 </code></pre></div>
             </div>
         </div>
