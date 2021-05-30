@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'blogs',
+    'config',
+    'comments',
     'eras',
     'persons',
     'scenes',
