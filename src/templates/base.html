@@ -10,7 +10,6 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
     <link rel="bookmark" href="{% static 'favicon.ico' %}"/>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/headers/">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
 <body>
@@ -34,7 +33,7 @@
 
       <div class="col-md-3 text-end">
         <a href="{% url 'login' %}" class="btn btn-sm btn-outline-primary me-2">登录</a>
-        <a href="/accounts/register" class="btn btn-sm btn-primary">注册</a>
+        <a href="{% url 'signup' %}" class="btn btn-sm btn-primary">注册</a>
       </div>
     </header>
   </div>
