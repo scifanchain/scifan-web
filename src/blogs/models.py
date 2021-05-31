@@ -11,7 +11,7 @@ class Category(models.Model):
         (STATUS_DELETE, '删除')
     )
 
-    name = models.CharField(max_length=20, verbose_name="分类名称")
+    name = models.CharField(max_length=510, verbose_name="分类名称")
     status = models.PositiveSmallIntegerField(default=STATUS_NORMAL, choices=STATUS_ITEMS, verbose_name="状态")
     is_nav = models.BooleanField(default=False, verbose_name="是否为导航")
     owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="作者")
