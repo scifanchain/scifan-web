@@ -1,12 +1,11 @@
 import django
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
+
 
 class SigninView(LoginView):
     redirect_authenticated_user = True
-
 
 def index(request):
     return HttpResponse('This ia accounts index')
