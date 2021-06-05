@@ -29,16 +29,4 @@
     </ul>
 </div>
 
-<div class="">
-    <h2 class="h4 mt-3">可用的素材</h2>
-    <ul class="list-unstyled">
-    {% for stage in stages %}
-        <li>
-            <a href="/accounts/stage/{{stage.id}}">{{ stage.title }}</a>
-        </li>
-    {% endfor %}
-    </ul>
-</div>
-
-
 {% endblock %}
