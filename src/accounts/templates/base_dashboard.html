@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">首页</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">首页</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#">市场</a>
@@ -36,17 +36,18 @@
             </ul>
             <span class="navbar-text">
                 {% if request.user.is_authenticated %}
-                    {{ request.user.username}},
+                    <a href="{% url 'dashboard' %}">{{ request.user.username}}</a>,
                     <a href="{% url 'logout' %}">退出</a>
                 {% else %}
-                    <a href="{% url 'login' %}">登录</a>
+                    <a href="{% url 'login' %}" class="btn btn-sm btn-outline-primary me-2">登录</a>
+                    <a href="{% url 'signup' %}" class="btn btn-sm btn-primary">注册</a>
                 {% endif %}
             </span>
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-2">
                 <ul class="list-group">
@@ -57,8 +58,11 @@
                     <li class="list-group-item">{% trans "Works" %}</li>
                 </ul>
             </div>
-            <div class="col-10">
+            <div class="col-7">
                 {% block content %}{% endblock %}
+            </div>
+            <div class="col-3">
+                <h2 class="h4">数据表格</h2>
             </div>
         </div>
     </div>

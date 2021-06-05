@@ -12,3 +12,5 @@ class LoginForm(forms.Form):
         max_length=200,
         )
     your_name = forms.CharField(label='Your name', max_length=100)
+
+    

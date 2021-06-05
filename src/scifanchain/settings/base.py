@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'events',
     'stories',
     'widget_tweaks',
+    'node',
 ]
 
 MIDDLEWARE = [

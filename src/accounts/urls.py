@@ -11,4 +11,5 @@ urlpatterns = [
     path('login/', SigninView.as_view(), name='login'),
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('stage/<int:id>/', views.stage, name='stage'),
 ]
