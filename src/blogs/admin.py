@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from .adminforms import PostAdminForm
 
 from blogs.adminforms import PostAdminForm
-from .models import Post, Category, Tag
+from .models import Post, Category, Tag, Link, Sidebar, Comment
 
 
 @admin.register(Category)
@@ -76,3 +76,28 @@ class PostAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         qs = super(PostAdmin, self).get_queryset(request)
         return qs.filter(owner=request.user)
+
+
+@admin.register(Link)
+class LinkAdmin(admin.ModelAdmin):
+    list_display = ('title', 'href', 'status', 'weight', 'created_time')
+    fields = ('title', 'href', 'status', 'weight')
+
+    def save_model(self, request, obj, form, change) -> None:
+        obj.owner = request.user
+        return super(LinkAdmin, self).save_model(request, obj, form, change)
+
+
+@admin.register(Sidebar)
+class SidebarAdmin(admin.ModelAdmin):
+    list_display = ('title', 'display_type', 'content', 'created_time')
+    fields = ('title', 'display_type', 'content')
+
+    def save_model(self, request, obj, form, change) -> None:
+        obj.owner = request.user
+        return super(SidebarAdmin, self).save_model(request, obj, form, change)
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('target', 'nickname', 'content', 'website', 'created_time')
