@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Category, Post
+import markdown
 
 
 def index(request):
@@ -30,5 +31,11 @@ def lists(request, category_id=None, tag_id=None):
 
     return render(request, 'blogs/list.html', context=context)
 
-def detail(request):
-    return render(request, 'blogs/detail.html')
+def detail(request, id):
+    post = get_object_or_404(Post, pk=id)
+    post.content = markdown.markdown(post.content, extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',  # 语法高亮拓展
+        'markdown.extensions.toc'  # 自动生成目录
+    ])  # 修改blog.content内容为html
+    return render(request, 'blogs/detail.html', {'post':post})

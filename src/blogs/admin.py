@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.core.exceptions import RequestAborted
 from django.urls import reverse
 from django.utils.html import format_html
 from .adminforms import PostAdminForm
@@ -54,10 +53,11 @@ class PostAdmin(admin.ModelAdmin):
     actions_on_bottom = True
     save_on_top = True
     fields = (
-        ('title', 'category'),
+        'title',
         'desc',
-        'status',
+        'category',
         'content',
+        'status',
         'tag',
     )
     filter_vertical = ('tag',)
@@ -76,4 +76,3 @@ class PostAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         qs = super(PostAdmin, self).get_queryset(request)
         return qs.filter(owner=request.user)
-

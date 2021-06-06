@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from mdeditor.fields import MDTextField
 
 
 class Category(models.Model):
@@ -66,7 +67,8 @@ class Post(models.Model):
 
     title = models.CharField(max_length=200, verbose_name="标题")
     desc = models.CharField(max_length=1024, blank=True, verbose_name="摘要")
-    content = models.TextField(verbose_name="正文", help_text="请使用MarkDown格式", default="")
+    content = MDTextField(
+        verbose_name="正文", help_text="请使用MarkDown格式", default="")
     status = models.PositiveSmallIntegerField(default=STATUS_NORMAL, choices=STATUS_ITEMS, verbose_name="状态")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="分类")
     tag = models.ManyToManyField(Tag, verbose_name="标签")
