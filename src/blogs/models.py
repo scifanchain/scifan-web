@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 from mdeditor.fields import MDTextField
+from django.forms import ModelForm, TextInput, Textarea
+from django.template.loader import render_to_string
 
 
 class Category(models.Model):
@@ -84,6 +86,8 @@ class Post(models.Model):
     archive = models.ForeignKey(
         Archive, on_delete=models.CASCADE, null=True, verbose_name="存档", blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="作者")
+    pv = models.PositiveIntegerField(default=1)
+    uv = models.PositiveIntegerField(default=1)
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 
     class Meta:
@@ -122,6 +126,10 @@ class Post(models.Model):
         queryset = cls.objects.filter(status=cls.STATUS_NORMAL)
         return queryset
 
+    @classmethod
+    def hot_posts(cls):
+        return cls.objects.filter(status=cls.STATUS_NORMAL).only('id', 'title').order_by('-pv')
+
 
 class Comment(models.Model):
     STATUS_NORMAL = 1
@@ -134,14 +142,24 @@ class Comment(models.Model):
         Post, verbose_name="评论目标", on_delete=models.CASCADE)
     content = models.CharField(max_length=2000, verbose_name="内容")
     nickname = models.CharField(max_length=50, verbose_name="昵称")
-    website = models.URLField(verbose_name="网站")
-    email = models.EmailField(verbose_name="邮箱")
+    email = models.EmailField(verbose_name="邮箱", blank=True, null=True)
     status = models.PositiveSmallIntegerField(
         default=STATUS_NORMAL, choices=STATUS_ITEMS, verbose_name="状态")
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 
     class Meta:
         verbose_name = verbose_name_plural = "评论"
+
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content', 'nickname', 'email']
+        widgets = {
+            'nickname': TextInput(attrs={'class': 'form-control form-control-sm',}),
+            'content': Textarea(attrs={'class': 'form-control form-control-sm', 'rows': 5,}),
+            'email': TextInput(attrs={'class': 'form-control form-control-sm',}),
+        }
 
 
 class Link(models.Model):
@@ -180,6 +198,11 @@ class Sidebar(models.Model):
         (4, '最新评论'),
     )
 
+    DISPLAY_HTML = 1
+    DISPLAY_LATEST = 2
+    DISPLAY_HOT = 3
+    DISPLAY_COMMENT = 4
+
     title = models.CharField(max_length=50, verbose_name="标题")
     display_type = models.PositiveSmallIntegerField(
         default=1, choices=SIDE_TYPE, verbose_name="展示类型")
@@ -193,3 +216,41 @@ class Sidebar(models.Model):
 
     class Meta:
         verbose_name = verbose_name_plural = "侧边栏"
+
+    def __str__(self):
+        return self.title
+
+    def _render_latest(self):
+        pass
+
+    @classmethod
+    def get_all(cls):
+        return cls.objects.filter(status=cls.STATUS_SHOW)
+
+    def content_html(self):
+        """ 通过直接渲染模板 """
+        from .models import Post  # 避免循环引用
+        from .models import Comment
+
+        result = ''
+        if self.display_type == self.DISPLAY_HTML:
+            result = self.content
+        elif self.display_type == self.DISPLAY_LATEST:
+            context = {
+                'posts': Post.latest_posts()
+            }
+            result = render_to_string(
+                'blogs/sidebar_posts.html', context)
+        elif self.display_type == self.DISPLAY_HOT:
+            context = {
+                'posts': Post.hot_posts()
+            }
+            result = render_to_string(
+                'blogs/sidebar_posts.html', context)
+        elif self.display_type == self.DISPLAY_COMMENT:
+            context = {
+                'comments': Comment.objects.filter(status=Comment.STATUS_NORMAL)
+            }
+            result = render_to_string(
+                'blogs/sidebar_comments.html', context)
+        return result

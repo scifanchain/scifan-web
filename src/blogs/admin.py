@@ -100,4 +100,4 @@ class SidebarAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('target', 'nickname', 'content', 'website', 'created_time')
+    list_display = ('target', 'nickname', 'content', 'created_time')
