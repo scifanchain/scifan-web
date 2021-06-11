@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from .models import Category, Comment, Post, Tag, Sidebar, CommentForm
 import markdown
 from django.views.generic import DetailView, ListView, TemplateView
+from common.choices import Status
 
 
 class CommonViewMixin:
@@ -18,7 +19,7 @@ class CommonViewMixin:
         return Sidebar.objects.filter(status=Sidebar.STATUS_SHOW)
 
     def get_navs(self):
-        categories = Category.objects.filter(status=Category.STATUS_NORMAL)
+        categories = Category.objects.filter(status=Status.STATUS_NORMAL)
         nav_categories = []
         normal_categories = []
         for cate in categories:
@@ -34,7 +35,7 @@ class CommonViewMixin:
 
 
 class IndexView(CommonViewMixin, ListView):
-    queryset = Post.objects.filter(status=Post.STATUS_NORMAL)\
+    queryset = Post.objects.filter(status=Status.STATUS_NORMAL)\
         .select_related('owner')\
         .select_related('category')
     paginate_by = 10

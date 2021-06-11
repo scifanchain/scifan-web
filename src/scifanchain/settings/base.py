@@ -43,14 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'blogs',
-    'eras',
-    'persons',
-    'scenes',
-    'events',
     'stories',
     'widget_tweaks',
-    'node',
+    'docs',
     'mdeditor',
+    'simple_history',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'scifanchain.urls'

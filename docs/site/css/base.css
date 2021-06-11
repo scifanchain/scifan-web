@@ -282,6 +282,3 @@ h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, h4:hover .head
         padding: 0.5rem 0;
     }
 }
-
-/* 定制 */
-h2 {border-bottom: #999 solid 4px; padding-bottom: 4px;}
