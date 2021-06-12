@@ -16,3 +16,9 @@ class Maturity(IntegerChoices):
     MATURITY_WRITING = 3, '撰写'
     MATURITY_REDACT = 4, '编校'
     MATURITY_FINAL = 5, '定稿'
+
+class StoryType(IntegerChoices):
+    PERSON = 1, '人物'
+    PLACE = 2, '地点'
+    ERA = 3, '纪元'
+    EVENT = 4, '事件'

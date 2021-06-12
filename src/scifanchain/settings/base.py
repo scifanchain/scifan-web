@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'docs',
     'mdeditor',
     'simple_history',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

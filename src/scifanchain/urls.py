@@ -30,4 +30,5 @@ urlpatterns = [
     # path('stories/', include('stories.urls')),
     # path('events/', include('events.urls')),
     path('mdeditor/', include('mdeditor.urls')),
+    path('api-auth/', include('rest_framework.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
