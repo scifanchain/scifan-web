@@ -34,13 +34,13 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../首页.md" class="nav-link">首页</a>
+                                <a href=".." class="nav-link">首页</a>
                             </li>
                             <li class="navitem">
                                 <a href="../%E6%88%90%E4%B8%BA%E5%88%9B%E4%BD%9C%E8%80%85/" class="nav-link">成为创作者</a>
                             </li>
                             <li class="navitem">
-                                <a href="../%E6%88%90%E4%B8%BA%E9%AA%8C%E8%AF%81%E4%BA%BA/" class="nav-link">成为证证人</a>
+                                <a href="../%E6%88%90%E4%B8%BA%E9%AA%8C%E8%AF%81%E4%BA%BA/" class="nav-link">成为验证人</a>
                             </li>
                             <li class="navitem">
                                 <a href="../%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF%E5%9B%BE/" class="nav-link">发展路线图</a>
@@ -121,10 +121,18 @@
 <p>Markdown是一种轻量级标记语言，排版语法简洁，让人们更多地关注内容本身而非排版。它使用易读易写的纯文本格式编写文档，可与HTML混编，可导出 HTML、PDF 以及本身的 .md 格式的文件。因简洁、高效、易读、易写，Markdown被大量使用。</p>
 <p><a href="https://markdown.com.cn/">Markdown教程</a></p>
 <h2 id="_2">编辑文档</h2>
-<h3 id="forkclone">Fork并clone文档代码</h3>
-<p>在github上fork仓库，使用以下命令，将fork仓库的代码clone到本地：</p>
-<pre><code>git clone git@github.com:xxx
+<p>Scifanchain在github上代码开源，本文档在 https://github.com/scifanchain/web/docs 目录下，该目录下还有一个docs目录和一个site目录，其中docs目录下存放着的，就是本文档的内容，它们是以.md为扩展名的Markdown格式文本。</p>
+<h3 id="a-github">a) 在github拥有提交代码权限</h3>
+<p>如果您在github上加入Scifanchain组织成员，那么您应该拥有修改提交代码的权限，可以直接git clone该目录，然后用以下命令切换到gh-pages分支，以git方式提交：</p>
+<pre><code>git checkout gh-pages
 </code></pre>
+<p><strong><em>特别需要注意的是：</em></strong> 我们在github的Pages中，部署的是 https://github.com/scifanchain/web/ 的gh-pages分支，所以您提交代码时务必要切换到gh-pages分支。</p>
+<h3 id="b-forkclone">b) Fork并clone文档代码</h3>
+<p>如果您没有github上的代码提交权限，可以用提交PR的方式申请合并内容。首先，您需要fork web仓库，使用以下命令，将web仓库的代码clone到本地。fork之后的仓库地址应该像以下这样：</p>
+<pre><code>git@github.com:your_github_username/web.git
+</code></pre>
+<p>如图所示：</p>
+<p><img alt="fork仓库" src="../img/fork_github.jpeg" /></p>
 <p>在本地编写完内容后，在项目\scifanchain\docs&gt;目录下，执行以下命令发布到github：</p>
 <pre><code>mkdocs gh-deploy
 </code></pre>
