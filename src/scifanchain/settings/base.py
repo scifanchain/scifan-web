@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'home',
     'blogs',
     'stories',
+    'eras',
     'widget_tweaks',
-    'docs',
     'mdeditor',
     'simple_history',
     'rest_framework',
@@ -186,5 +186,4 @@ MDEDITOR_CONFIGS = {
         'lineNumbers': False,  # lineNumbers
         'language': 'zh'  # zh / en / es
     }
-
 }

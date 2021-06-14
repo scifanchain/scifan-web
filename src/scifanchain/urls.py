@@ -24,10 +24,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('blogs/', include('blogs.urls')),
-    # path('eras/', include('eras.urls')),
-    # path('persons/', include('persons.urls')),
-    # path('scenes/', include('scenes.urls')),
-    # path('stories/', include('stories.urls')),
+    path('api/stories/', include('stories.urls', namespace='stories')),
     # path('events/', include('events.urls')),
     path('mdeditor/', include('mdeditor.urls')),
     path('api-auth/', include('rest_framework.urls'))
