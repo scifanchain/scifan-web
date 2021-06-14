@@ -4,5 +4,5 @@ from .models import Stage
 
 @admin.register(Stage)
 class StageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'status', 'created_time')
-    fields = ('name', 'status', 'maturity', 'content', 'version')
+    list_display = ('title', 'status', 'created_time')
+    fields = ('title', 'status', 'maturity', 'content', 'version')

@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.base import Model
 from common.choices import Status, Maturity, StoryType
 from simple_history.models import HistoricalRecords
+from django.forms import ModelForm, TextInput, Textarea
 
 
 class Stage(models.Model):
-    name = models.CharField(max_length=50, verbose_name="标题")
+    title = models.CharField(max_length=50, verbose_name="标题")
     content = models.TextField(verbose_name="内容", default="")
     author = models.ManyToManyField(User, verbose_name="作者")
     maturity = models.PositiveSmallIntegerField(
@@ -33,6 +35,16 @@ class Stage(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class StageForm(ModelForm):
+    class Meta:
+        model = Stage
+        fields = ['title', 'content']
+        widgets = {
+            'title': TextInput(attrs={'class': 'form-control form-control-sm', }),
+            'content': Textarea(attrs={'class': 'form-control form-control-sm', 'rows': 5, }),
+        }
 
 
 class Era(models.Model):
