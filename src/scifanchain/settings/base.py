@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'home',
     'blogs',
     'stories',
-    'eras',
+    # 'eras',
     'widget_tweaks',
     'mdeditor',
     'simple_history',
@@ -186,4 +186,15 @@ MDEDITOR_CONFIGS = {
         'lineNumbers': False,  # lineNumbers
         'language': 'zh'  # zh / en / es
     }
+}
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_RENDERER_CLASSES': [
+    #     'rest_framework.renderers.JSONRenderer',
+    # ],
+    # 'DEFAULT_PARSER_CLASSES': [
+    #     'rest_framework.parsers.JSONParser',
+    # ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
 }
