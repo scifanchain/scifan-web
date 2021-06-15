@@ -6,7 +6,7 @@
 {% block content %}
 
 <div class="small mb-1">开始撰写一个片断。之后你可以不断完善和扩充它的内容，直到它成为一篇令你满意的佳作：</div>
-<form action="{% url 'accounts:dashboard' %}" method="post">
+<form action="/api/v1/stories/" method="post">
     {% csrf_token %}
     <div class="">
         {{ form.title }}
