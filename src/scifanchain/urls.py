@@ -25,7 +25,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
    
     path('blogs/', include('blogs.urls')),
-    path('api/stories/', include('stories.urls', namespace='stories')),
+    path('api/v1/stories/', include('stories.urls', namespace='stories')),
     # path('events/', include('events.urls')),
     path('mdeditor/', include('mdeditor.urls')),
     path('api-auth/', include('rest_framework.urls'))
