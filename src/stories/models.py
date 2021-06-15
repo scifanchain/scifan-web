@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.base import Model
+from django.forms.widgets import SelectMultiple
+from rest_framework.fields import HiddenField
 from common.choices import Status, Maturity, StoryType
 from simple_history.models import HistoricalRecords
 from django.forms import ModelForm, TextInput, Textarea
@@ -9,7 +10,8 @@ from django.forms import ModelForm, TextInput, Textarea
 class Stage(models.Model):
     title = models.CharField(max_length=50, verbose_name="标题")
     content = models.TextField(verbose_name="内容", default="")
-    author = models.ManyToManyField(User, verbose_name="作者")
+    owner = models.ForeignKey(User, verbose_name="创建者", on_delete=models.CASCADE)
+    authors = models.ManyToManyField(User, verbose_name="参与者",blank=False, related_name='authors')
     maturity = models.PositiveSmallIntegerField(
         default=Maturity.MATURITY_START,
         choices=Maturity.choices,
@@ -27,15 +29,15 @@ class Stage(models.Model):
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
     updated_time = models.DateTimeField(auto_now_add=True, verbose_name="最近修改时间")
     history = HistoricalRecords(
-        excluded_fields=['created_time', 'updated_time'])
+        excluded_fields=['created_time', 'updated_time', 'owner_id'])
 
     class Meta:
-        verbose_name = verbose_name_plural = "故事"
+        verbose_name = verbose_name_plural = "片断"
         ordering = ['-id']
 
     def __str__(self) -> str:
-        return self.name
-
+        return self.title
+        
 
 class StageForm(ModelForm):
     class Meta:
@@ -43,7 +45,7 @@ class StageForm(ModelForm):
         fields = ['title', 'content']
         widgets = {
             'title': TextInput(attrs={'class': 'form-control form-control-sm', }),
-            'content': Textarea(attrs={'class': 'form-control form-control-sm', 'rows': 5, }),
+            'content': Textarea(attrs={'class': 'form-control form-control-sm', 'rows': 5}),
         }
 
 
@@ -55,7 +57,6 @@ class Era(models.Model):
     version = models.IntegerField(verbose_name="版本", default=1)
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
     updated_time = models.DateTimeField(auto_now_add=True, verbose_name="修改时间")
-    history = HistoricalRecords()
 
     class Meta:
         verbose_name = verbose_name_plural = "纪元"

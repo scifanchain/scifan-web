@@ -20,9 +20,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('home.urls')),
     path('accounts/', include('accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+   
     path('blogs/', include('blogs.urls')),
     path('api/stories/', include('stories.urls', namespace='stories')),
     # path('events/', include('events.urls')),

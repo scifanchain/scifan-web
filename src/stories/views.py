@@ -1,20 +1,20 @@
+from django.http.response import Http404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import StageListSerializer
+from .serializers import StageListSerializer, StageDetailSerializer
 from .models import Stage
+from rest_framework import generics
+from .permissions import IsAdminUserOrReadOnly
 
 
-@api_view(['GET', 'POST'])
-def index(request):
-    if request.method == 'GET':
-        stages = Stage.objects.all()
-        serializer = StageListSerializer(stages, many=True)
-        return Response(serializer.data)
+class StageList(generics.ListCreateAPIView):
+    queryset = Stage.objects.all()
+    serializer_class = StageListSerializer
 
-    elif request.method == 'POST':
-        serializer = StageListSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class StageDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminUserOrReadOnly]
+
+    queryset = Stage.objects.all()
+    serializer_class = StageDetailSerializer
+
