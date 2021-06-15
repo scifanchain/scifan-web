@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.deletion import CASCADE
+from django.db.models.fields import BooleanField
+from django.db.models.fields.related import ForeignKey
 from django.forms.widgets import SelectMultiple
 from rest_framework.fields import HiddenField
 from common.choices import Status, Maturity, StoryType
@@ -11,7 +14,6 @@ class Stage(models.Model):
     title = models.CharField(max_length=50, verbose_name="标题")
     content = models.TextField(verbose_name="内容", default="")
     owner = models.ForeignKey(User, verbose_name="创建者", on_delete=models.CASCADE)
-    authors = models.ManyToManyField(User, verbose_name="参与者",blank=False, related_name='authors')
     maturity = models.PositiveSmallIntegerField(
         default=Maturity.MATURITY_START,
         choices=Maturity.choices,
@@ -48,6 +50,10 @@ class StageForm(ModelForm):
             'content': Textarea(attrs={'class': 'form-control form-control-sm', 'rows': 5}),
         }
 
+class Authors(models.Model):
+    stage_id = ForeignKey(Stage, on_delete=CASCADE)
+    user_id = ForeignKey(User, on_delete=CASCADE)
+    is_creater = BooleanField(default=True)
 
 class Era(models.Model):
     cycle = models.PositiveSmallIntegerField(verbose_name='纪周')
