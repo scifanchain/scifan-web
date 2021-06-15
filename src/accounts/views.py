@@ -24,6 +24,7 @@ def dashboard(request):
             instance = stage_form.save(commit=False)
             instance.owner = request.user
             instance.save()
+            # stage_form.save_m2m()
     else:
         stage_form = StageForm()
     return render(request, 'accounts/dashboard.html', {'form':stage_form, 'stages':stages})
