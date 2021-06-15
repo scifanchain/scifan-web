@@ -17,7 +17,7 @@
                         <div class="alert alert-danger" role="alert">用户名或密码错误，请重新尝试。</div>
                     {% endif %}
 
-                    <form action="{% url 'login' %}" method="post" class="border p-3 bg-light">
+                    <form action="{% url 'accounts:login' %}" method="post" class="border p-3 bg-light">
                         {% csrf_token %}
                         <label for="username" class="form-label small">用户名或电子邮件地址</label>
                         <div class="mb-2">
@@ -33,7 +33,7 @@
                         </div>
                     </form>
                     <div class="mt-4 mb-1 small"><a href="{% url 'password_change' %}" class="">忘记密码？</a></div>
-                    <div class="small">没有赛凡链账号？马上<a href="{% url 'signup' %}" class="link-primary">注册一个</a></div>
+                    <div class="small">没有赛凡链账号？马上<a href="{% url 'accounts:signup' %}" class="link-primary">注册一个</a></div>
                 </div>
             </div>
 

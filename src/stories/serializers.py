@@ -18,13 +18,13 @@ class StageListSerializer(serializers.ModelSerializer):
             'owner',
         ]
 
-    def create(self, validated_data):
-        validated_data.authors.set(1,)
-        # authors_data = validated_data.pop('authors')
-        instance = Stage.objects.create(**validated_data)
-        # instance.authors.add(request.user.id)
+    # def create(self, validated_data):
+    #     validated_data.authors.set(1,)
+    #     # authors_data = validated_data.pop('authors')
+    #     instance = Stage.objects.create(**validated_data)
+    #     # instance.authors.add(request.user.id)
 
-        return instance
+    #     return instance
 
 class StageDetailSerializer(serializers.ModelSerializer):
     class Meta:

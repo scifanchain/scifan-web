@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'home',
     'blogs',
     'stories',
-    'eras',
+    # 'eras',
     'widget_tweaks',
     'mdeditor',
     'simple_history',
