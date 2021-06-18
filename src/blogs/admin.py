@@ -28,11 +28,11 @@ class TagAdmin(admin.ModelAdmin):
 
 
 # 自定义过滤器只显示登录用户分类
-class CateboryOwnerFilter(admin.SimpleListFilter):
+class CategoryOwnerFilter(admin.SimpleListFilter):
     title = "分类过滤器"
     parameter_name = "owner_category"
 
-    def lookups(self, request, model_admin) -> list[tuple[int, str]]:
+    def lookups(self, request, model_admin):
         return Category.objects.filter(owner=request.user).values_list('id', 'name')
     
     def queryset(self, request, queryset):
@@ -47,7 +47,7 @@ class PostAdmin(admin.ModelAdmin):
     form = PostAdminForm
     list_display = ('title','category', 'owner', 'status', 'created_time', 'operator')
     list_display_links = []
-    list_filter = [CateboryOwnerFilter] # 使用自定义过滤器
+    list_filter = [CategoryOwnerFilter] # 使用自定义过滤器
     search_fields = ['title', 'category__name']
     actions_on_top = True
     actions_on_bottom = True
