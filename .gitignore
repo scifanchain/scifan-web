@@ -5,6 +5,8 @@
 __pycache__
 *.sqlite3
 media
+src/scifanchain/settings/
+src/scifanchain/wsgi.py
  
 # Backup files #
 *.bak
