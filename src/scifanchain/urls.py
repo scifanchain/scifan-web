@@ -22,10 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('accounts/', include('accounts.urls')),
-    # path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('blogs/', include('blogs.urls')),
     # path('events/', include('events.urls')),
     path('mdeditor/', include('mdeditor.urls')),
-    path('api-auth/', include('rest_framework.urls'))
-     path('api/v1/stories/', include('stories.urls', namespace='stories')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/v1/stories/', include('stories.urls', namespace='stories')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
