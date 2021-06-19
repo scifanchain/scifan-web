@@ -10,7 +10,6 @@ class SigninView(LoginView):
 def index(request):
     return HttpResponse('This ia accounts index')
 
-
 def signup(request):
     return render(request, 'accounts/signup.html')
 
