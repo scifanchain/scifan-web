@@ -13,7 +13,6 @@ def index(request):
 def signup(request):
     return render(request, 'accounts/signup.html')
 
-
 def dashboard(request):
     stages = Stage.objects.all()[:5]
 
