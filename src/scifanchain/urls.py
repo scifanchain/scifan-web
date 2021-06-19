@@ -20,13 +20,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('home.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
-   
     path('blogs/', include('blogs.urls')),
-    path('api/v1/stories/', include('stories.urls', namespace='stories')),
     # path('events/', include('events.urls')),
     path('mdeditor/', include('mdeditor.urls')),
     path('api-auth/', include('rest_framework.urls'))
+     path('api/v1/stories/', include('stories.urls', namespace='stories')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
