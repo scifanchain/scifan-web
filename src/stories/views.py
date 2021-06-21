@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 class StageList(generics.ListCreateAPIView):
     queryset = Stage.objects.all()
-    serializer_class = StageListSerializer
+    # serializer_class = StageListSerializer
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

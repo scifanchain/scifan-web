@@ -34,7 +34,7 @@
                 <li class="nav-item"><a class="nav-link" href="#">地点</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">故事</a></li>
             </ul>
-            <span class="navbar-text">
+            {% comment %} <span class="navbar-text">
                 {% if request.user.is_authenticated %}
                     <a href="{% url 'dashboard' %}">{{ request.user.username}}</a>，
                     <a href="{% url 'logout' %}">退出</a>
@@ -42,7 +42,7 @@
                     <a href="{% url 'login' %}" class="btn btn-sm btn-outline-primary me-2">登录</a>
                     <a href="{% url 'signup' %}" class="btn btn-sm btn-primary">注册</a>
                 {% endif %}
-            </span>
+            </span> {% endcomment %}
             </div>
         </div>
     </nav>
