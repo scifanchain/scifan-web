@@ -18,15 +18,14 @@
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-4">
        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
            <img src="{% static 'img/logo_48-40.png' %}" alt="logo">
-           <span class="mx-2">赛凡链</span>
-           <span class="small text-white-50">Scifan Chain</span>
+           <span class="mx-2">赛凡链博客</span>
+           <span class="small text-white-50">Scifanchain Blog</span>
         </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-4 text-white">驶往星河</a></li>
-        <li><a href="#" class="nav-link px-4 text-white">创作中心</a></li>
-        <li><a href="#" class="nav-link px-4 text-white">社区治理</a></li>
-        <li><a href="{% url 'blogs:index' %}" class="nav-link px-4 text-white">博客</a></li>
+      <li><a href="#" class="nav-link px-4 text-white">赛凡链</a></li>
+      <li><a href="{% url 'blogs:index' %}" class="nav-link px-4 text-white">文档中心</a></li>
+      <li><a href="{% url 'blogs:index' %}" class="nav-link px-4 text-white">博客</a></li>
       </ul>
 
       {% comment %} <div class="col-md-3 text-end">
@@ -69,12 +68,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">产业联盟</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://docs.scifanchain.com" tabindex="-1" aria-disabled="true">文档</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/blogs" tabindex="-1" aria-disabled="true">博客</a>
             </li>
           </ul>
         </div>
