@@ -36,7 +36,7 @@
               <a href="{% url 'logout' %}">退出</a>
             {% else %}
               <a href="{% url 'login' %}" class="btn btn-sm btn-outline-primary me-2">登录</a>
-              <a href="{% url 'signup' %}" class="btn btn-sm btn-primary">注册</a>
+              <a href="{% url 'accounts:signup' %}" class="btn btn-sm btn-primary">注册</a>
             {% endif %}
         </span>
       </div>
