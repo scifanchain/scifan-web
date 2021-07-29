@@ -26,7 +26,7 @@
     {% endfor %}
 </ul>
 
-<form action="{% url 'comment' %}" method="POST" class="form-group">
+<form action="{% url 'blogs:comment' %}" method="POST" class="form-group">
     {% csrf_token %}
     <input type="hidden" name="target" value={{post.id}}>
     {{comment_form.as_p}}

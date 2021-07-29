@@ -7,7 +7,7 @@
 
 <div class="row">
 
-    <a class="h4" href="{% url 'detail' post.id %}">{{ post.title }}</a>
+    <a class="h4" href="{% url 'blogs:detail' post.id %}">{{ post.title }}</a>
 
     <div class="my-3">
         <span>作者:{{post.owner.username}}</span>
