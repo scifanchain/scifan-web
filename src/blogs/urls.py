@@ -3,7 +3,6 @@ from django.urls import path
 from . import views
 from .views import PostDetailView, PostListView, CategoryView, TagView, IndexView, CommentView
 
-app_name = 'blogs'
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
